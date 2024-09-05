@@ -1,17 +1,13 @@
-import Link from "next/link";
+import Calculate from "./bella/page";
 
 export default function Home() {
   return (
     <>
-      <div className="flex p-4 justify-center flex-col items-center">
-        <h3>Welcome to the simple calulator page</h3>
-        <p>Use the below link to navigate different calulator features </p>
-        <div className="flex justify-start items-start border w-full">
-          <ul>
-            <li>
-              <Link href="/margin">Margin Calulator</Link>
-            </li>
-          </ul>
+      <div className="flex p-4 justify-center flex-col items-center h-screen">
+        <h3 className="text-2xl ">Calulator for attirebella</h3>
+        {/* <p>Use the below link to navigate different calulator features </p> */}
+        <div className="flex justify-center items-center w-full">
+          <Calculate />
         </div>
       </div>
     </>
