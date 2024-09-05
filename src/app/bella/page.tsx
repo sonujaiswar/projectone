@@ -7,7 +7,7 @@ export default function Calculate() {
   const [margin, setMargin] = useState("");
   const [rounding, setRounding] = useState(10); // State for rounding value
   const calTax = Number(cost) * 0.1;
-  const costAfterTax = Number(cost) + calTax;
+  const costAfterTax = Math.round(Number(cost) + calTax / 10) * 10;
 
   // Convert margin input from percentage string to decimal value
   const calMarginPercent = Number(margin) / 100;
@@ -35,7 +35,7 @@ export default function Calculate() {
 
           {/* Margin Input */}
           <input
-            type="text"
+            type="number"
             value={margin}
             className="w-full outline-none border border-slate-200 h-9 rounded px-2"
             onChange={(e) => setMargin(e.target.value)}
