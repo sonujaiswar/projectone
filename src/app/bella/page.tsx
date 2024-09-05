@@ -44,6 +44,7 @@ export default function Calculate() {
 
           {/* Rounding Options */}
           <div className="flex gap-4">
+            <p>Round to </p>
             <label className="flex items-center gap-2">
               <input
                 type="radio"
@@ -52,7 +53,7 @@ export default function Calculate() {
                 onChange={() => setRounding(10)}
                 className="form-radio text-blue-500"
               />
-              Round to 10
+              10
             </label>
             <label className="flex items-center gap-2">
               <input
@@ -62,7 +63,7 @@ export default function Calculate() {
                 onChange={() => setRounding(20)}
                 className="form-radio text-blue-500"
               />
-              Round to 20
+              20
             </label>
             <label className="flex items-center gap-2">
               <input
@@ -72,7 +73,7 @@ export default function Calculate() {
                 onChange={() => setRounding(50)}
                 className="form-radio text-blue-500"
               />
-              Round to 50
+              50
             </label>
           </div>
 
