@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export default function Calculate() {
   const [cost, setCost] = useState("");
-  const [tax, setTax] = useState("");
   const [margin, setMargin] = useState("");
+  const [rounding, setRounding] = useState(10); // State for rounding value
   const calTax = Number(cost) * 0.1;
   const costAfterTax = Number(cost) + calTax;
 
@@ -16,21 +16,15 @@ export default function Calculate() {
   const marginCost = costAfterTax * calMarginPercent;
   const costAfterMargin = costAfterTax + marginCost;
 
-  // Round to the nearest 10
-  const roundedCostAfterMargin = Math.round(costAfterMargin / 10) * 10;
+  // Round to the selected value (10, 20, or 50)
+  const roundedCostAfterMargin =
+    Math.round(costAfterMargin / rounding) * rounding;
 
   return (
     <>
       <div className="flex justify-center items-center">
         <div className="w-96 p-8 shadow flex flex-col gap-5">
-          <input
-            type="number"
-            value={tax}
-            className="w-full outline-none border border-slate-200 h-9 rounded px-2"
-            onChange={(e) => setTax(e.target.value)}
-            placeholder="Enter tax"
-          />
-
+          {/* Cost Input */}
           <input
             type="number"
             value={cost}
@@ -39,6 +33,7 @@ export default function Calculate() {
             placeholder="Enter purchase cost"
           />
 
+          {/* Margin Input */}
           <input
             type="text"
             value={margin}
@@ -46,9 +41,48 @@ export default function Calculate() {
             onChange={(e) => setMargin(e.target.value)}
             placeholder="Enter margin percent"
           />
-          <p>Tax : {calTax}</p>
+
+          {/* Rounding Options */}
+          <div className="flex gap-4">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                value={10}
+                checked={rounding === 10}
+                onChange={() => setRounding(10)}
+                className="form-radio text-blue-500"
+              />
+              Round to 10
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                value={20}
+                checked={rounding === 20}
+                onChange={() => setRounding(20)}
+                className="form-radio text-blue-500"
+              />
+              Round to 20
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                value={50}
+                checked={rounding === 50}
+                onChange={() => setRounding(50)}
+                className="form-radio text-blue-500"
+              />
+              Round to 50
+            </label>
+          </div>
+
+          {/* Display Results */}
+          <p>Tax: {calTax}</p>
           <p>Cost after tax: {costAfterTax}</p>
-          <p>Cost after Margin (rounded): {roundedCostAfterMargin}</p>
+          <p>
+            Cost after Margin (rounded to nearest {rounding}):{" "}
+            {roundedCostAfterMargin}
+          </p>
         </div>
       </div>
     </>
