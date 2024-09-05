@@ -78,11 +78,20 @@ export default function Calculate() {
           </div>
 
           {/* Display Results */}
-          <p>Tax: {calTax}</p>
-          <p>Cost after tax: {costAfterTax}</p>
-          <p>
-            Cost after Margin (rounded to nearest {rounding}):{" "}
-            {roundedCostAfterMargin}
+          <p className="text-green-50 bg-green-700 p-2">
+            Rounded selling (rounded to {rounding}) :{" "}
+            <strong> {roundedCostAfterMargin}</strong>
+          </p>
+
+          <p className="text-teal-50 bg-teal-700 p-2">
+            Actual selling price : <strong>{costAfterMargin}</strong>
+          </p>
+
+          <p className="text-amber-50 bg-amber-700 p-2">
+            Tax : <strong> {calTax}</strong>
+          </p>
+          <p className="text-red-50 bg-red-700 p-2">
+            Purchase after tax : <strong>{costAfterTax}</strong>
           </p>
         </div>
       </div>
