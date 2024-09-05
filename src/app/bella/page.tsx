@@ -35,7 +35,7 @@ export default function Calculate() {
 
           {/* Margin Input */}
           <input
-            type="text"
+            type="number"
             value={margin}
             className="w-full outline-none border border-slate-200 h-9 rounded px-2"
             onChange={(e) => setMargin(e.target.value)}
